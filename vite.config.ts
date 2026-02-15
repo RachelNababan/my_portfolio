@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/portfolio_rachel/",
+  base: "/my_portfolio/",
   build: {
     outDir: "dist",
     // Increase warning threshold so we can focus on meaningful bundle sizes in this project
