@@ -3,16 +3,16 @@ import { SiGithub, SiLinkedin } from "react-icons/si";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="text-sm text-[var(--muted)] border-t border-[var(--border)] py-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-6">
+    <footer className="text-xs sm:text-sm text-[var(--muted)] border-t border-[var(--border)] py-4 sm:py-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6">
         {/* Left: message */}
-        <div>
+        <div className="text-center md:text-left">
           ❤️ by{" "}
           <span className="font-medium text-[var(--text)]">rachel</span>
         </div>
 
         {/* Right: social icons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           {/* <a
             href="https://www.kaggle.com/satyasubudhi"
             target="_blank"

@@ -2,7 +2,7 @@
 
 Modern portfolio website showcasing my work as an Informatics student specializing in Frontend Development, UI/UX Design, and Quality Assurance.
 
-🔗 **Live Demo**: [https://gabrielaamls.github.io/portfolio_rachel](https://gabrielaamls.github.io/portfolio_rachel)
+🔗 **Live Demo**: [https://rachelnababan.github.io/my_portfolio/](https://rachelnababan.github.io/my_portfolio/)
 
 ## ✨ Features
 

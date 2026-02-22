@@ -104,7 +104,7 @@ export const ProjectModal: React.FC<{
       <AnimatePresence>
         {open && project && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -122,7 +122,7 @@ export const ProjectModal: React.FC<{
             <motion.dialog
               open={open}
               aria-modal="true"
-              className="relative z-10 w-full max-w-4xl max-h-[90vh] p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-lg flex flex-col"
+              className="relative z-10 w-full max-w-4xl max-h-[90vh] sm:max-h-[85vh] p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-lg flex flex-col"
               initial={{ y: 50, opacity: 0, scale: 0.95 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: 40, opacity: 0, scale: 0.95 }}
@@ -131,22 +131,25 @@ export const ProjectModal: React.FC<{
               {/* Close */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 cursor-pointer text-[var(--muted)] hover:text-[var(--text)]"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 cursor-pointer text-[var(--muted)] hover:text-[var(--text)] p-2 rounded-full hover:bg-[var(--border)]/30 transition-colors z-20"
+                aria-label="Close modal"
               >
-                ✕
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-[var(--brand)] mb-2">
+              <h3 className="text-lg sm:text-xl font-bold text-[var(--brand)] mb-3 sm:mb-2 pr-8">
                 {project.title}
               </h3>
 
               {/* Tabs (only if iframe allowed) */}
               {iframeAllowed && (
-                <div className="flex border-b border-[var(--border)] mb-2">
+                <div className="flex border-b border-[var(--border)] mb-3 sm:mb-2 overflow-x-auto">
                   <button
                     onClick={() => setActiveTab("details")}
-                    className={`px-4 py-2 text-sm font-medium cursor-pointer ${
+                    className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium cursor-pointer whitespace-nowrap ${
                       activeTab === "details"
                         ? "text-[var(--brand)] border-b-2 border-[var(--brand)]"
                         : "text-[var(--muted)] hover:text-[var(--text)]"
@@ -160,7 +163,7 @@ export const ProjectModal: React.FC<{
                       setIframeLoaded(true);
                       setIframeReady(false);
                     }}
-                    className={`px-4 py-2 text-sm font-medium cursor-pointer ${
+                    className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium cursor-pointer whitespace-nowrap ${
                       activeTab === "playground"
                         ? "text-[var(--brand)] border-b-2 border-[var(--brand)]"
                         : "text-[var(--muted)] hover:text-[var(--text)]"
@@ -172,7 +175,7 @@ export const ProjectModal: React.FC<{
               )}
 
               {/* Body (scroll only here) */}
-              <div className="flex-1 overflow-y-auto pr-1 max-h-[500px] custom-scroll">
+              <div className="flex-1 overflow-y-auto pr-1 max-h-[60vh] sm:max-h-[500px] custom-scroll">
                 <AnimatePresence mode="wait">
                   {activeTab === "details" && (
                     <motion.div
@@ -247,16 +250,16 @@ export const ProjectModal: React.FC<{
                       {/* Links */}
                       {(project.links || project.href) && (
                         <div className="mb-4 pb-4 border-b border-[var(--border)]">
-                          <h4 className="text-sm font-semibold text-[var(--brand)] mb-2">Project Links</h4>
-                          <div className="flex gap-3 flex-wrap">
+                          <h4 className="text-xs sm:text-sm font-semibold text-[var(--brand)] mb-2">Project Links</h4>
+                          <div className="flex gap-2 sm:gap-3 flex-wrap">
                             {project.href && (
                               <a
                                 href={project.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border-2 border-[var(--brand)] bg-[var(--brand)]/10 text-[var(--brand)] hover:bg-[var(--brand)] hover:text-white transition-all"
+                                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border-2 border-[var(--brand)] bg-[var(--brand)]/10 text-[var(--brand)] hover:bg-[var(--brand)] hover:text-white transition-all"
                               >
-                                {FaLink && <FaLink className="w-4 h-4" />} 
+                                {FaLink && <FaLink className="w-3 h-3 sm:w-4 sm:h-4" />} 
                                 Live Demo
                               </a>
                             )}
@@ -270,9 +273,9 @@ export const ProjectModal: React.FC<{
                                   href={link.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] hover:border-[var(--brand)] hover:bg-[var(--brand)]/5 transition-all"
+                                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] hover:border-[var(--brand)] hover:bg-[var(--brand)]/5 transition-all"
                                 >
-                                  {Icon && <Icon className="w-4 h-4" />}
+                                  {Icon && <Icon className="w-3 h-3 sm:w-4 sm:h-4" />}
                                   {link.label}
                                 </a>
                               );

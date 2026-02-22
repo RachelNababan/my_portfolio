@@ -107,16 +107,16 @@ export const About: React.FC = () => {
 
   return (
     <section className="md:col-span-2">
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch"
         >
           {/* Left: Headline + features + CTAs */}
-          <motion.div variants={item} className="md:col-span-7">
-            <div className="panel-translucent relative overflow-hidden p-6 md:p-8 rounded-2xl border border-[var(--border)]">
+          <motion.div variants={item} className="md:col-span-7 order-2 md:order-1 flex">
+            <div className="panel-translucent relative overflow-hidden p-4 sm:p-6 md:p-8 rounded-2xl border border-[var(--border)] w-full">
               {/* Modern gradient border glow animation */}
               <motion.div
                 className="absolute inset-0 rounded-2xl pointer-events-none z-0"
@@ -153,31 +153,31 @@ export const About: React.FC = () => {
               />
 
               <div className="relative z-10">
-                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight flex items-center gap-3">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight flex items-center gap-3">
                   {name}
                 </h1>
 
                 {personal.title && (
-                  <div className="mt-2 text-sm text-muted-foreground">
+                  <div className="mt-2 text-xs sm:text-sm text-muted-foreground">
                     {personal.title}
                   </div>
                 )}
 
                 <motion.p
                   variants={item}
-                  className="mt-6 text-lg text-muted-foreground max-w-2xl"
+                  className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl"
                 >
                   {heroSummary}
                 </motion.p>
 
                 <motion.ul
                   variants={item}
-                  className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3"
+                  className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3"
                 >
                   {features.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
+                    <li key={f} className="flex items-start gap-2 sm:gap-3">
                       <svg
-                        className="mt-1 w-5 h-5 text-foreground/80"
+                        className="mt-1 w-4 h-4 sm:w-5 sm:h-5 text-foreground/80 flex-shrink-0"
                         viewBox="0 0 24 24"
                         fill="none"
                         aria-hidden
@@ -190,18 +190,18 @@ export const About: React.FC = () => {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span className="text-sm">{f}</span>
+                      <span className="text-xs sm:text-sm">{f}</span>
                     </li>
                   ))}
                 </motion.ul>
 
                 <motion.div
                   variants={item}
-                  className="mt-8 flex flex-wrap gap-3"
+                  className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3"
                 >
                   <a
                     href="#projects"
-                    className="inline-flex items-center gap-2 rounded-md bg-foreground text-background px-5 py-3 text-sm font-semibold shadow-lg hover:opacity-95"
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground text-background px-4 sm:px-5 py-2.5 sm:py-3 text-sm font-semibold shadow-lg hover:opacity-95 transition-opacity"
                     onClick={(e) => onNavClick(e, "#projects")}
                     onKeyDown={(e) => handleKeyActivation(e, "#projects")}
                   >
@@ -213,7 +213,7 @@ export const About: React.FC = () => {
                     download="RachelNababan_CV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
+                    className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 sm:py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -228,15 +228,15 @@ export const About: React.FC = () => {
           {/* Right: Single Profile Frame */}
           <motion.div
             variants={item}
-            className="md:col-span-5 flex items-center justify-center"
+            className="md:col-span-5 flex items-stretch justify-center order-1 md:order-2"
           >
             <motion.div
-              className="relative"
+              className="relative w-full max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md h-auto md:h-full"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Profile frame with modern styling */}
-              <div className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl">
+              {/* Profile frame with modern styling - now matches height of left panel */}
+              <div className="relative w-full h-full min-h-[400px] md:min-h-0 rounded-2xl overflow-hidden shadow-2xl">
                 {/* Animated gradient border */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl"
@@ -262,14 +262,14 @@ export const About: React.FC = () => {
                     <img
                       src={carouselItems[0].image}
                       alt={carouselItems[0].label || "Profile"}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                     />
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-sky-500 via-indigo-600 to-purple-600 text-white">
-                      <div className="text-7xl font-bold mb-4">
+                      <div className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4">
                         {name?.[0] ?? "R"}
                       </div>
-                      <div className="text-lg font-medium opacity-90">
+                      <div className="text-base sm:text-lg font-medium opacity-90 px-4 text-center">
                         {name}
                       </div>
                     </div>
